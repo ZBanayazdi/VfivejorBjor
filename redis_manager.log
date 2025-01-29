@@ -1,0 +1,260 @@
+2025-01-28 16:51:10,261 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 19430196
+2025-01-28 16:51:10,261 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس ناندوز طعم هات پری پری ', 'price': 3100000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/daeemarket', 'product_link': 'https://basalam.com/daeemarket/product/19430196', 'gallery': ['https://statics.basalam.com/public-56/users/yDGEmx/01-18/R6LF3K7t0932rfuBuUs8S3Vk00FkphUVPyfLqYNUWfUwZHswHc.jpg_512X512X70.jpg']}
+2025-01-28 16:51:10,263 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:51:10,264 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 19430196: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:51:10,264 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:52:53,785 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 3842756
+2025-01-28 16:52:53,785 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس مخصوص لواشک', 'price': 150000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/giftkade', 'product_link': 'https://basalam.com/giftkade/product/3842756', 'gallery': ['https://statics.basalam.com/public-7/users/YQXqy/05-15/2HXm7gaURdv1ig61oZTVg7pvto2ejKIWYg3rPQTX3B68xf36u2.jpg_512X512X70.jpg']}
+2025-01-28 16:52:53,785 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:52:53,786 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 3842756: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:52:53,786 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:53:30,703 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 15661168
+2025-01-28 16:53:30,704 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس فلفل سبز تند آمازون 93 گرمی(اورجینال)', 'price': 2117000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/talangimarkezi', 'product_link': 'https://basalam.com/talangimarkezi/product/15661168', 'gallery': ['https://statics.basalam.com/public-27/users/JlByZ2/07-27/ZcOnazotvcOlD2osH679hFb5pwSc6xeNahbtte8gwoHxJCrUNo.png_512X512X70.png']}
+2025-01-28 16:53:30,704 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:53:30,705 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 15661168: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:53:30,705 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:54:36,922 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 19430196
+2025-01-28 16:54:36,922 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس ناندوز طعم هات پری پری ', 'price': 3100000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/daeemarket', 'product_link': 'https://basalam.com/daeemarket/product/19430196', 'gallery': ['https://statics.basalam.com/public-56/users/yDGEmx/01-18/R6LF3K7t0932rfuBuUs8S3Vk00FkphUVPyfLqYNUWfUwZHswHc.jpg_512X512X70.jpg']}
+2025-01-28 16:54:36,922 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:54:36,922 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 19430196: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:54:36,923 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:55:45,399 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 19430196
+2025-01-28 16:55:45,399 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس ناندوز طعم هات پری پری ', 'price': 3100000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/daeemarket', 'product_link': 'https://basalam.com/daeemarket/product/19430196', 'gallery': ['https://statics.basalam.com/public-56/users/yDGEmx/01-18/R6LF3K7t0932rfuBuUs8S3Vk00FkphUVPyfLqYNUWfUwZHswHc.jpg_512X512X70.jpg']}
+2025-01-28 16:55:45,400 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:55:45,400 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 19430196: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:55:45,401 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:56:57,349 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 3842756
+2025-01-28 16:56:57,350 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس مخصوص لواشک', 'price': 150000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/giftkade', 'product_link': 'https://basalam.com/giftkade/product/3842756', 'gallery': ['https://statics.basalam.com/public-7/users/YQXqy/05-15/2HXm7gaURdv1ig61oZTVg7pvto2ejKIWYg3rPQTX3B68xf36u2.jpg_512X512X70.jpg']}
+2025-01-28 16:56:57,350 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:56:57,350 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 3842756: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:56:57,351 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:59:23,575 - RedisManager - DEBUG - شروع ذخیره جزئیات محصول با ID: 9821073
+2025-01-28 16:59:23,576 - RedisManager - DEBUG - جزئیات اولیه: {'title': 'سس سیر و فلفل تند و خوش طعم تای پرستیژ سریراچا تایلندی (500گرم) sriracha thai prestige ', 'price': 2313000, 'free_shipping_to_same_city': None, 'free_shipping_to_iran': None, 'city': None, 'vendor_link': 'https://basalam.com/daeemarket', 'product_link': 'https://basalam.com/daeemarket/product/9821073', 'gallery': ['https://statics.basalam.com/public-12/users/yDGEmx/09-20/NfTFfKtVskAZlBHoNwCcyBuOViWahahqzDJ3OMwvlhh5coq2j7.jpg_512X512X70.jpg', 'https://statics.basalam.com/public-12/users/yDGEmx/09-20/8fmhoqm8N23YXawIOPcAL4ZpC68AMxRQ365223Up8jncQz6eOB.jpg_512X512X70.jpg']}
+2025-01-28 16:59:23,576 - RedisManager - DEBUG - گالری با موفقیت به JSON تبدیل شد
+2025-01-28 16:59:23,577 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 9821073: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 16:59:23,577 - RedisManager - ERROR - جزئیات خطا:
+Traceback (most recent call last):
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\Model\redisManager.py", line 231, in set_product_details
+    self.users.hset(key, mapping=processed_details)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\commands\core.py", line 5045, in hset
+    return self.execute_command("HSET", name, *pieces)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\client.py", line 541, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 557, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\connection.py", line 107, in pack
+    for arg in map(self.encode, args):
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Zeinab\PycharmProjects\VfivejorBjorBot\venv\Lib\site-packages\redis\_parsers\encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:10:44,208 - RedisManager - DEBUG - ذخیره جزئیات محصول 17470291
+2025-01-28 17:10:44,208 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 17470291: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:10:52,431 - RedisManager - DEBUG - ذخیره جزئیات محصول 10114328
+2025-01-28 17:10:52,432 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 10114328: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:14:36,145 - RedisManager - DEBUG - ذخیره جزئیات محصول 17470291
+2025-01-28 17:14:36,146 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 17470291: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:32,307 - RedisManager - DEBUG - ذخیره جزئیات محصول 15661168
+2025-01-28 17:15:32,308 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 15661168: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:36,450 - RedisManager - DEBUG - ذخیره جزئیات محصول 17470291
+2025-01-28 17:15:36,451 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 17470291: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:39,612 - RedisManager - DEBUG - ذخیره جزئیات محصول 3833339
+2025-01-28 17:15:39,613 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 3833339: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:43,239 - RedisManager - DEBUG - ذخیره جزئیات محصول 17470291
+2025-01-28 17:15:43,240 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 17470291: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:47,490 - RedisManager - DEBUG - ذخیره جزئیات محصول 15661168
+2025-01-28 17:15:47,490 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 15661168: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:52,466 - RedisManager - DEBUG - ذخیره جزئیات محصول 15661168
+2025-01-28 17:15:52,467 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 15661168: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:15:57,401 - RedisManager - DEBUG - ذخیره جزئیات محصول 15661168
+2025-01-28 17:15:57,401 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 15661168: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-01-28 17:16:00,051 - RedisManager - DEBUG - ذخیره جزئیات محصول 17470291
+2025-01-28 17:16:00,052 - RedisManager - ERROR - خطا در ذخیره جزئیات محصول 17470291: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
