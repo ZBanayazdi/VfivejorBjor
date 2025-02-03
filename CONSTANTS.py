@@ -7,7 +7,7 @@ headers = {
 base_url = 'https://basalam.com/'
 product_ids_api_url = "https://search.basalam.com/ai-engine/api"
 product_details_api_url = "https://core.basalam.com/api_v2/product/"
-utm_data='?utm_source=telegram&utm_medium=bot&utm_campaign=jorbjor'
+utm_data = '?utm_source=telegram&utm_medium=bot&utm_campaign=jorbjor'
 rows = '100'
 payload = {
     "q": "عسل",  # عبارت جستجو به فارسی
@@ -56,22 +56,12 @@ start_message = '''
 '''
 
 # RESPONSE_FIELDS
-id='id'
-products = 'products'
-product_link='product_link'
 title = 'title'
 price = 'price'
-free_shipping_to_same_city = 'free_shipping_to_same_city'
-free_shipping_to_iran = 'free_shipping_to_iran'
-identifier = 'identifier'
 photo = 'photo'
-photos ='photos'
 video = 'video'
 videos = 'videos'
 gallery = 'gallery'
-city='city'
-vendor='vendor'
-vendor_link='vendor_link'
 
 # TEXTS
 search_by_text_btn_txt = 'بازارگردی با نام محصول'
@@ -83,44 +73,30 @@ enter_image_query_to_search = '''
 عالیه، حالا تصویر محصول رو برام بفرست
  میتونی یه پست رو هم با من به اشتراک بذاری'''
 
-wrong_text_query_to_search=f'''
+wrong_text_query_to_search = f'''
 نوع جستجو را که متنی انتخاب کرده بودی
 حالا یا نام محصول مورد نظر را ارسال کنید
 
 یا اگر میخواهید بر اساس تصویر جستجو کنید
 از صفحه کلید نوع جستجو را به تصویری تغییر بدهید
 '''
-wrong_image_query_to_search=f'''
+wrong_image_query_to_search = f'''
 نوع جستجو را که تصویری انتخاب کرده بودی
 حالا یا تصویر مورد نظر را ارسال کنید
 
 یا اگر میخواهید بر اساس متن جستجو کنید
 از صفحه کلید نوع جستجو را به متنی تغییر بدهید
 '''
-select_keyboard_options = 'لطفا یکی از گزینه های صفحه کلید را انتخاب کنید'
 searching_query = 'صبر کن ای دل که صبر سیرت اهل صفاست ...'
-new_query="جستجوی جدید"
-
-text_search = 'text_search'
-image_search = 'image_search'
+new_query = "جستجوی جدید"
 
 # STATES
 start_state = 'start_state'
 search_type_selected = 'search_type_selected'
 text_search_state = 'text_search_state'
 image_search_state = 'image_search_state'
-wait_for_text_query_state='wait_for_text_query_state'
-wait_for_image_query_state='wait_for_image_query_state'
-searching_text_state = 'searching_text_state'
-searching_image_state = 'searching_image_state'
-states = [start_state,
-          text_search_state,
-          image_search_state,
-          wait_for_text_query_state,
-          wait_for_image_query_state,
-          searching_text_state,
-          searching_image_state,
-          ]
+wait_for_text_query_state = 'wait_for_text_query_state'
+wait_for_image_query_state = 'wait_for_image_query_state'
 
 # BUTTON TEXTS AND CALLBACKS
 # TEXTS

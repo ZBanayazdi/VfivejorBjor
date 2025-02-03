@@ -1,9 +1,5 @@
 import sys
-import types
-from threading import Timer
-
 from telebot.types import InputMediaPhoto, InputMediaVideo
-
 import keyboards
 from CONSTANTS import *
 from Control.scrollStateManager import ScrollStateManager
@@ -64,19 +60,55 @@ class botManager:
         self.logger = logging.getLogger("TeleBot")
         self.logger.setLevel(logging.DEBUG)
 
+    # def can_enter_text_search_state(self, message):
+    #     user_id = message.from_user.id
+    #     current_state = self.repository.get_state(user_id)
+    #
+    #     if message.text == search_by_text_btn_txt:
+    #         if current_state in [start_state, image_search_state]:
+    #             return True
+    #     return False
+    # def can_enter_text_search_state(self, message):
+    #     user_id = message.from_user.id
+    #     current_state = self.repository.get_state(user_id)
+    #
+    #     print(f"Current state for user {user_id}: {current_state}")  # برای دیباگ
+    #
+    #     if message.text == search_by_text_btn_txt:
+    #         # چک می‌کنیم اگر در حالت جستجوی تصویری هستیم، اجازه ورود به این هندلر را ندهیم
+    #         if current_state in [wait_for_image_query_state, image_search_state]:
+    #             return False
+    #         # فقط از حالت استارت یا جستجوی متنی می‌تواند وارد شود
+    #         return current_state in [start_state, text_search_state]
+    #     return False
     def can_enter_text_search_state(self, message):
         user_id = message.from_user.id
-        print('can_enter_text_search_state')
         current_state = self.repository.get_state(user_id)
 
+        print(f"Current state for user {user_id}: {current_state}")  # برای دیباگ
+
         if message.text == search_by_text_btn_txt:
-            if current_state in [start_state, image_search_state]:
+            # اگر در حالت انتظار متن جستجو یا جستجوی متنی هستیم، باید پیام اشتباه بدهیم
+            if current_state in [wait_for_text_query_state, text_search_state]:
                 return True
+            # فقط از حالت استارت یا جستجوی تصویری می‌تواند وارد شود
+            return current_state in [start_state, image_search_state]
         return False
 
+    def can_enter_handle_text_in_image_search(self, message):
+        user_id = message.from_user.id
+        current_state = self.repository.get_state(user_id)
+
+        print(f"Check image search handler - Current state: {current_state}")  # برای دیباگ
+
+        if message.content_type == 'text':
+            # اگر در حالت جستجوی تصویری هستیم و یکی از دکمه‌ها زده شده
+            if current_state in [wait_for_image_query_state, image_search_state] and \
+                    message.text in [search_by_text_btn_txt, search_by_image_btn_txt]:
+                return True
+        return False
     def can_enter_image_search_state(self, message):
         user_id = message.from_user.id
-        print('can_enter_image_search_state')
         current_state = self.repository.get_state(user_id)
 
         if message.text == search_by_image_btn_txt:
@@ -86,7 +118,6 @@ class botManager:
 
     def can_enter_wait_for_text_query_state(self, message):
         user_id = message.from_user.id
-        print('can_enter_wait_for_text_query_state')
         current_state = self.repository.get_state(user_id)
         if current_state == text_search_state:
             return True
@@ -95,34 +126,22 @@ class botManager:
 
     def can_enter_wait_for_image_query_state(self, message):
         user_id = message.from_user.id
-        print('can_enter_wait_for_image_query_state')
         current_state = self.repository.get_state(user_id)
         if current_state == image_search_state:
             return True
         else:
             return False
 
-    def can_enter_searching_text_state(self, message):
-        user_id = message.from_user.id
-        print('can_enter_searching_text_state')
-        current_state = self.repository.get_state(user_id)
-        print(f'current_state:{current_state}')  # اضافه کنید
-        if current_state == searching_text_state:
-            return True
-        else:
-            return False
-
-    def can_enter_handle_text_in_image_search(self, message):
-        if message.content_type == 'text' and self.repository.get_state(message.from_user.id) == image_search_state \
-                and message.text in [search_by_text_btn_txt, search_by_image_btn_txt]:
-            return True
-        else:
-            return False
+    # def can_enter_handle_text_in_image_search(self, message):
+    #     """چک می‌کند که آیا پیام متنی در حالت جستجوی تصویری است یا نه"""
+    #     if message.content_type == 'text':
+    #         current_state = self.repository.get_state(message.from_user.id)
+    #         if current_state == wait_for_image_query_state and message.text in [search_by_text_btn_txt,
+    #                                                                             search_by_image_btn_txt]:
+    #             return True
+    #     return False
 
     def register_handlers(self):
-
-        # سایر هندلرها
-
         @self.bot.message_handler(commands=['help', 'start'])
         def start_state_handler(message):
             user_id = message.from_user.id
@@ -130,9 +149,25 @@ class botManager:
             self.bot.send_message(message.chat.id, start_message, reply_markup=keyboards.main_menu(), parse_mode="HTML")
             self.repository.set_state(user_id, start_state)
 
+        # @self.bot.message_handler(func=self.can_enter_text_search_state)
+        # def text_search_state_handler(message):
+        #     user_id = message.from_user.id
+        #     self.bot.send_message(message.chat.id, enter_text_query_to_search)
+        #     self.repository.set_state(user_id, text_search_state)
+
+
+
         @self.bot.message_handler(func=self.can_enter_text_search_state)
         def text_search_state_handler(message):
             user_id = message.from_user.id
+            current_state = self.repository.get_state(user_id)
+
+            # اگر در حالت انتظار متن جستجو یا جستجوی متنی هستیم و دوباره دکمه جستجوی متنی زده شده
+            if current_state in [wait_for_text_query_state, text_search_state]:
+                self.bot.send_message(message.chat.id, wrong_text_query_to_search)
+                return
+
+            # اگر از حالت‌های دیگر آمده باشد
             self.bot.send_message(message.chat.id, enter_text_query_to_search)
             self.repository.set_state(user_id, text_search_state)
 
@@ -197,16 +232,33 @@ class botManager:
                 self.bot.send_message(message.chat.id, "متأسفانه در جستجوی محصول مشکلی پیش آمد.")
                 self.bot.send_message(chat_id=message.chat.id, text=new_query)
 
+        # @self.bot.message_handler(func=self.can_enter_handle_text_in_image_search)
+        # def handle_text_in_image_search(message):########################################################################
+        #     """هندلر برای پیام‌های متنی در حالت جستجوی تصویری"""
+        #     if message.text in search_by_image_btn_txt:
+        #         self.bot.send_message(message.chat.id, wrong_image_query_to_search)
+        #         return
+        #     else:
+        #         self.bot.send_message(message.chat.id, enter_image_query_to_search)
         @self.bot.message_handler(func=self.can_enter_handle_text_in_image_search)
         def handle_text_in_image_search(message):
-            current_state = self.repository.get_state(message.from_user.id)
-
             """هندلر برای پیام‌های متنی در حالت جستجوی تصویری"""
-            if message.text in search_by_image_btn_txt:
+            user_id = message.from_user.id
+            current_state = self.repository.get_state(user_id)
+
+            print(f"Handling text in image search - Current state: {current_state}")  # برای دیباگ
+
+            if message.text == search_by_image_btn_txt:
                 self.bot.send_message(message.chat.id, wrong_image_query_to_search)
                 return
-            else:
-                self.bot.send_message(message.chat.id, enter_image_query_to_search)
+            elif message.text == search_by_text_btn_txt:
+                # تغییر حالت به جستجوی متنی
+                self.repository.set_state(user_id, text_search_state)
+                self.bot.send_message(message.chat.id, enter_text_query_to_search)
+                return
+
+            # برای سایر پیام‌های متنی در حالت تصویری
+            self.bot.send_message(message.chat.id, enter_image_query_to_search)
 
         @self.bot.message_handler(content_types=['photo'], func=self.can_enter_wait_for_image_query_state)
         def wait_for_image_query_state_handler(message):
@@ -293,52 +345,6 @@ class botManager:
                 self.logger.error(f"خطا در ناوبری: {str(e)}")
                 self.bot.answer_callback_query(call.id, "خطا در نمایش محصول")
 
-    def _prepare_gallery_media_group(self, product_details: dict) -> list:
-        """آماده‌سازی گروه مدیا برای گالری محصول
-
-        این متد یک گروه مدیا از تصاویر و ویدئوهای محصول ایجاد می‌کند.
-        گالری به صورت یک لیست از URLها دریافت می‌شود و هر URL می‌تواند
-        مربوط به عکس یا ویدئو باشد.
-        """
-        media_group = []
-        _gallery = product_details.get('gallery', [])  # دریافت گالری به صورت لیست
-
-        # اگر گالری خالی است، برمی‌گردیم
-        if not gallery:
-            self.logger.warning(f"گالری خالی برای محصول دریافت شد: {product_details.get('title', 'نامشخص')}")
-            return []
-
-        # تهیه کپشن برای اولین مدیا
-        caption = (
-            f"نام محصول:\n{product_details.get('title', 'نامشخص')}\n"
-            f"قیمت: {product_details.get('price', 'نامشخص')} تومان\n"
-            f"ارسال رایگان: {'بله' if product_details.get('free_shipping_to_iran') else 'خیر'}\n"
-            f"شهر: {product_details.get('city', 'نامشخص')}\n"
-            f"لینک محصول:\n{product_details.get('product_link', '')}"
-        )
-
-        # چون گالری حالا یک لیست است، مستقیماً روی آن حلقه می‌زنیم
-        for i, media_url in enumerate(_gallery):
-            try:
-                # تشخیص نوع مدیا و ساخت آبجکت مناسب
-                is_video = media_url.endswith('.mp4')
-                if is_video:
-                    media = InputMediaVideo(media_url, caption=caption if i == 0 else '')
-                else:
-                    media = InputMediaPhoto(media_url, caption=caption if i == 0 else '')
-                media_group.append(media)
-
-            except Exception as e:
-                self.logger.error(f"خطا در پردازش مدیای شماره {i}: {str(e)}")
-                continue  # به پردازش بقیه مدیاها ادامه می‌دهیم
-
-        # اگر هیچ مدیایی با موفقیت اضافه نشد
-        if not media_group:
-            self.logger.warning("هیچ مدیایی با موفقیت به گروه اضافه نشد")
-            return []
-
-        self.logger.info(f"گروه مدیا با {len(media_group)} آیتم با موفقیت ساخته شد")
-        return media_group
 
     def _send_product_message(self, message, product_details, edit=False):
         """ارسال پیام محصول با آلبوم تصاویر"""
@@ -374,7 +380,7 @@ class botManager:
             valid_urls = []
             if media:
                 media[0].caption = caption
-                media[0].parse_mode = 'HTML'  # اضافه کردن این خط
+                media[0].parse_mode = 'HTML'
 
             for url in gallery:
                 if not isinstance(url, str) or not url.strip():
@@ -459,7 +465,6 @@ class botManager:
 
                 # تنظیم وضعیت جدید
                 self.repository.set_state(user_id, wait_for_text_query_state)
-                self.bot.send_message(chat_id=chat_id, text=new_query)
 
             except telebot.apihelper.ApiException as e:
                 self.logger.error(f"Telegram API error: {str(e)}")
@@ -468,3 +473,6 @@ class botManager:
         except Exception as e:
             self.logger.error(f"Error in _send_product_message: {str(e)}")
             self.bot.send_message(chat_id, "متأسفانه در نمایش محصول مشکلی پیش آمد.")
+
+        self.bot.send_message(chat_id=chat_id, text=new_query)
+

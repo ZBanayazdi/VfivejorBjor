@@ -1,9 +1,7 @@
 from dataclasses import dataclass
-from typing import Dict, List
-
+from typing import Dict
 import httpx
 from tenacity import retry, stop_after_attempt, wait_fixed
-
 from CONSTANTS import base_url, product_ids_api_url, utm_data
 
 
@@ -21,8 +19,6 @@ class productFields:
 
 
 class searchService:
-    # base_url = "https://search.basalam.com/ai-engine/api"
-    #
     headers = {
         "Accept": "application/json; charset=utf-8",
     }
@@ -56,11 +52,6 @@ class searchService:
                 'file': ('image.jpg', file, 'multipart/form-data')  # تغییر Content-Type
             }
 
-            # حذف Content-Type از headers چون multipart/form-data خودش تنظیم میشه
-            headers = {
-                "Accept": "application/json"
-            }
-
             print(f"Sending request to {url}")
             print(f"File size: {len(file)} bytes")
 
@@ -68,7 +59,7 @@ class searchService:
                 response = client.post(
                     url,
                     files=files,
-                    headers=headers,
+                    headers=cls.headers,
                     timeout=10.0
                 )
 
