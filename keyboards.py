@@ -1,8 +1,7 @@
 from telebot.types import InlineKeyboardButton, KeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 
-from CONSTANTS import search_by_text_btn_txt, search_by_image_btn_txt, prev_product_btn_text, next_product_btn_text, \
-    prev_gallery_btn_text, next_gallery_btn_text, basalam_link_btn_text, base_url, next_gallery_item, prev_gallery_item, \
-    next_product, prev_product
+from CONSTANTS import search_by_text_btn_txt, search_by_image_btn_txt, next_product_btn_text, basalam_link_btn_text, \
+    base_url, next_product, utm_data
 
 
 def main_menu():
@@ -14,12 +13,9 @@ def main_menu():
 
 
 def search_gallery_navigation_buttons():
-    prev_product_btn = InlineKeyboardButton(prev_product_btn_text, callback_data=prev_product)
     next_product_btn = InlineKeyboardButton(next_product_btn_text, callback_data=next_product)
+    basalam_link_btn = InlineKeyboardButton(basalam_link_btn_text, url=f'{base_url}{utm_data}')
 
-    basalam_link_btn = InlineKeyboardButton(basalam_link_btn_text, url=base_url)
-
-    markup = InlineKeyboardMarkup(row_width=2)
-    markup.row(prev_product_btn, next_product_btn)
-    markup.add(basalam_link_btn)
+    markup = InlineKeyboardMarkup(row_width=1)
+    markup.row(basalam_link_btn,next_product_btn)
     return markup

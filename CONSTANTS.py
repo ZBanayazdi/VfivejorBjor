@@ -4,11 +4,10 @@ headers = {
     "Content-Type": "application/json; charset=utf-8",
     "Authorization": f"Bearer {TOKEN}"
 }
-# basalam_api_url = "https://search.basalam.com/ai-engine/api/v2.0/product/search"
 base_url = 'https://basalam.com/'
 product_ids_api_url = "https://search.basalam.com/ai-engine/api"
 product_details_api_url = "https://core.basalam.com/api_v2/product/"
-
+utm_data='?utm_source=telegram&utm_medium=bot&utm_campaign=jorbjor'
 rows = '100'
 payload = {
     "q": "عسل",  # عبارت جستجو به فارسی
@@ -22,6 +21,23 @@ payload = {
         "sameCity": 0  # شهر مشابه (0 = خیر، 1 = بله)
     }
 }
+# start_message = '''
+# باسلام!
+# من بات جور به جور هستم. بیا باهم بازارگردی کنیم
+#
+# از صفحه کلید انتخاب کنید:
+# بازارگردی با نام محصول
+# بازارگردی با تصویر یا پست محصول
+#
+# در طول اجرای برنامه هر وقت خواستید نوع جستجو را تغییر دهید از این صفحه کلید استفاده کنید
+#
+# با /start هم میتونی به اول اجرا برگردی
+#
+# اینم از لینک باسلام
+# https://basalam.com/
+#
+# بزن بریم!
+# '''
 start_message = '''
 باسلام!
 من بات جور به جور هستم. بیا باهم بازارگردی کنیم
@@ -34,11 +50,11 @@ start_message = '''
 
 با /start هم میتونی به اول اجرا برگردی
 
-اینم از لینک باسلام
-https://basalam.com/
+<a href="https://basalam.com/">🔗 باسلام؛ بازار بی مرز</a>
 
 بزن بریم!
 '''
+
 # RESPONSE_FIELDS
 id='id'
 products = 'products'
@@ -59,18 +75,32 @@ vendor_link='vendor_link'
 
 # TEXTS
 search_by_text_btn_txt = 'بازارگردی با نام محصول'
-search_by_image_btn_txt = 'بازارگردی با تصویر یا پست محصول'
-enter_text_query_to_search = 'نام محصول را وارد کنید'
-enter_image_query_to_search = 'تصویر یا پست محصول را ارسال کنید'
-wrong_query_to_search = '''
-مجددا نوع جستجو را وارد کردید
-نام محصول را وارد کنید
-درصورتی که میخواهید نوع جستجو را تغییر دهید از کیبورد اقدام کنید'''
+search_by_image_btn_txt = 'بازارگردی با تصویر محصول'
+enter_text_query_to_search = '''
+عالیه،
+حالا هر متنی رو که به من بدی عنوان محصول برات جستجو میکنم'''
+enter_image_query_to_search = '''
+عالیه، حالا تصویر محصول رو برام بفرست
+ میتونی یه پست رو هم با من به اشتراک بذاری'''
+
+wrong_text_query_to_search=f'''
+نوع جستجو را که متنی انتخاب کرده بودی
+حالا یا نام محصول مورد نظر را ارسال کنید
+
+یا اگر میخواهید بر اساس تصویر جستجو کنید
+از صفحه کلید نوع جستجو را به تصویری تغییر بدهید
+'''
+wrong_image_query_to_search=f'''
+نوع جستجو را که تصویری انتخاب کرده بودی
+حالا یا تصویر مورد نظر را ارسال کنید
+
+یا اگر میخواهید بر اساس متن جستجو کنید
+از صفحه کلید نوع جستجو را به متنی تغییر بدهید
+'''
 select_keyboard_options = 'لطفا یکی از گزینه های صفحه کلید را انتخاب کنید'
 searching_query = 'صبر کن ای دل که صبر سیرت اهل صفاست ...'
+new_query="جستجوی جدید"
 
-
-edit_text_query = 'عبارتی که جستجو کردی را اصلاح کنید'
 text_search = 'text_search'
 image_search = 'image_search'
 
@@ -81,11 +111,8 @@ text_search_state = 'text_search_state'
 image_search_state = 'image_search_state'
 wait_for_text_query_state='wait_for_text_query_state'
 wait_for_image_query_state='wait_for_image_query_state'
-# enter_text_query_to_search_state = 'enter_text_query_to_search_state'
-# enter_image_query_to_search_state = 'enter_image_query_to_search_state'
 searching_text_state = 'searching_text_state'
 searching_image_state = 'searching_image_state'
-# response_received = 'response_received'
 states = [start_state,
           text_search_state,
           image_search_state,
@@ -93,21 +120,13 @@ states = [start_state,
           wait_for_image_query_state,
           searching_text_state,
           searching_image_state,
-          # response_received
           ]
 
 # BUTTON TEXTS AND CALLBACKS
 # TEXTS
-prev_product_btn_text = 'محصول قبلی'
 next_product_btn_text = 'محصول بعدی'
-prev_gallery_btn_text = 'گالری قبلی'
-next_gallery_btn_text = 'گالری بعدی'
-basalam_link_btn_text = 'لینک باسلام'
+basalam_link_btn_text = 'باسلام؛ بازار بی مرز'
 
 # CALLBACKS
-prev_product = 'prev_product'
 next_product = 'next_product'
-prev_gallery_item = 'prev_gallery_item'
-next_gallery_item = 'next_gallery_item'
-nav_btns = (prev_product, next_product, prev_gallery_item, next_gallery_item)
 basalam_link = 'basalam_link'

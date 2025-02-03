@@ -51,17 +51,6 @@ class ScrollStateManager:
 
         return state["product_index"]
 
-    def prev_product(self, user_id: str) -> int:
-        """رفتن به محصول قبلی"""
-        if user_id not in self._scroll_states:
-            return 0
-
-        state = self._scroll_states[user_id]
-        if state["product_index"] > 0:
-            state["product_index"] -= 1
-
-        return state["product_index"]
-
     def clear_state(self, user_id: str):
         """پاک کردن وضعیت اسکرول کاربر"""
         if user_id in self._scroll_states:
